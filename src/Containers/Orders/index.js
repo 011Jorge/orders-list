@@ -1,41 +1,27 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 
-import Logo from "./assets/illustration-logo.svg";
-import Trash from "./assets/icon-trash.svg";
+import Package from "../../assets/illustration-packaging.svg";
+import Trash from "../../assets/icon-trash.svg";
 
 import {
   Container,
   ContainerItens,
   H1,
-  InputLabel,
-  Input,
-  Button,
   Orders,
   DeleteOrder,
   DivOrder,
   DivName,
   DivOrders,
+  Button
 } from "./styled";
 
 function App() {
   const [orders, setOrders] = useState([]);
-
-  const InputOrder = useRef();
-  const InputName = useRef();
-
-  async function addNewOrder() {
-    const { data: newOrder } = await axios.post(
-      "http://localhost:3001/orders",
-      {
-        order: InputOrder.current.value,
-        clientName: InputName.current.value,
-      }
-    );
-    setOrders([...orders, newOrder]);
-  }
-
+  const navigate = useNavigate()
+  
   /* Resposavel por manter a página atualizada e com o dados mantidos */
   useEffect(() => {
     async function fetchOrder() {
@@ -51,19 +37,15 @@ function App() {
     setOrders(del);
   }
 
+  function goBackPage() {
+    navigate("/")
+  }
+
   return (
     <Container>
-      <img src={Logo} alt="illustration-logo" />
+      <img src={Package} alt="illustration-logo" />
       <ContainerItens>
         <H1>Faça seu pedido!</H1>
-
-        <InputLabel>Pedido</InputLabel>
-        <Input ref={InputOrder} placeholder="seu pedido aqui..."></Input>
-
-        <InputLabel>Nome do Cliente</InputLabel>
-        <Input ref={InputName} placeholder="seu nome aqui..."></Input>
-
-        <Button onClick={addNewOrder}>Novo Pedido</Button>
 
         <ol>
           <H1>Lista de Pedidos Feitos</H1>
@@ -80,6 +62,7 @@ function App() {
             </Orders>
           ))}
         </ol>
+        <Button onClick={goBackPage}>Voltar</Button>
       </ContainerItens>
     </Container>
   );
