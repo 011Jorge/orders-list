@@ -22,7 +22,8 @@ Essa aplicação é a parte front-end do projeto, recomendo para você que veja 
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png" alt="img-react-js" width="150px" />
 <img src="https://raw.githubusercontent.com/styled-components/brand/master/styled-components.png" alt="img-styled-components" width="100px" /> <hr>
-## 🐱‍🚀 Contribuições
+
+##  🐱‍🚀 Contribuições
 
 <table>
   <tr>
